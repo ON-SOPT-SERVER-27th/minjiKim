@@ -15,12 +15,26 @@ const suffle = (memberArr) => {
   return memberArr;
 };
 
-const makeTeam = (num) => {
+const makeTeam = (teamNum) => {
   const suffledOB = suffle(OB);
   const suffledYB = suffle(YB);
 
-  const result = [];
-  for (let i = 1; i <= num; i++) {}
+  let result = [];
+
+  for (let i = 0; i < teamNum; i++) {
+    result.push([`${i + 1}조`]);
+  }
+
+  suffledOB.map((member) => {
+    let num = suffledOB.indexOf(member) % teamNum;
+    result[num].push(member);
+  });
+
+  suffledYB.map((member) => {
+    let num = suffledYB.indexOf(member) % teamNum;
+    result[num].push(member);
+  });
+
   return result;
 };
 
