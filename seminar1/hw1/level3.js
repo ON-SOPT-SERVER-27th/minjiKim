@@ -19,20 +19,20 @@ const makeTeam = (teamNum) => {
   const suffledOB = suffle(OB);
   const suffledYB = suffle(YB);
 
-  let result = [];
+  const result = {};
 
   for (let i = 0; i < teamNum; i++) {
-    result.push([`${i + 1}조`]);
+    result[`${i + 1}조`] = [];
   }
 
   suffledOB.map((member) => {
     let num = suffledOB.indexOf(member) % teamNum;
-    result[num].push(member);
+    result[`${num + 1}조`].push(member);
   });
 
   suffledYB.map((member) => {
     let num = suffledYB.indexOf(member) % teamNum;
-    result[num].push(member);
+    result[`${num + 1}조`].push(member);
   });
 
   return result;
